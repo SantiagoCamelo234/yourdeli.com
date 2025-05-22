@@ -1,0 +1,19 @@
+<h1>Pedido #<%= @order.id %></h1>
+
+<p><strong>Cliente:</strong> <%= @order.customer_name %></p>
+<p><strong>Total:</strong> <%= number_to_currency(@order.total) %></p>
+<p><strong>Estado:</strong> <%= @order.status %></p>
+
+<h2>Cambiar estado del pedido</h2>
+<%= form_with model: [:admin, @order], local: true do |form| %>
+  <div>
+    <%= form.label :status, "Estado" %><br>
+    <%= form.select :status, ["pendiente", "en preparación", "enviado", "entregado"] %>
+  </div>
+
+  <br>
+  <%= form.submit "Actualizar estado" %>
+<% end %>
+
+<br>
+<%= link_to "← Volver al listado", admin_orders_path %>

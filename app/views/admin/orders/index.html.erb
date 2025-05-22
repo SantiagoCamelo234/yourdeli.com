@@ -1,0 +1,15 @@
+<h1>Pedidos</h1>
+
+<div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+  <% @orders.each do |order| %>
+    <%= link_to admin_order_path(order), style: "text-decoration: none; color: inherit;" do %>
+      <div 
+        style="border: 1px solid #ccc; padding: 1rem; border-radius: 10px; width: 200px; cursor: pointer;" 
+      >
+        <p><strong>Cliente:</strong> <%= order.customer_name %></p>
+        <p><strong>Total:</strong> <%= number_to_currency(order.total) %></p>
+        <p><strong>Estado:</strong> <%= order.status %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
